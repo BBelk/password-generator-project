@@ -7,9 +7,8 @@ var specialChars = ["\"", "#", "$", "%", "&", "'", "*", "+", ",", "-", ".", "/",
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword(){
-  // console.log("Button Pressed");
   newInput = parseInt(prompt("How long will your password be? Input between 8 and 128."));
-  if(!newInput || newInput < 7 || newInput > 128){
+  if(!newInput || newInput < 8 || newInput > 128){
     alert("You must input a number between 8 and 128.");
     return;
   }
@@ -27,8 +26,6 @@ function generatePassword(){
     if(confirmUppercase){allAvailableChars.push(...uppercaseChars);}
     if(confirmNumber){allAvailableChars.push(...numberChars);}
     if(confirmSpecial){allAvailableChars.push(...specialChars);}
-
-    // console.log(allAvailableChars);
 
     var newPasswordString = "";
     for(var x = 0; x < newInput; x++){
@@ -51,35 +48,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Assignment Code-Default
-// var generateBtn = document.querySelector("#generate");
-
-// function generatePassword(){
-  
-// }
-
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-
-//   passwordText.value = password;
-
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
