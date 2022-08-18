@@ -4,6 +4,14 @@ var confirmUppercase = false;
 var confirmNumber = false;
 var confirmSpecial = false;
 
+var lowercaseChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var uppercaseChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numberChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+var specialChars = ["#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
+
+var allAvailableChars = [];
+
+
 var generateBtn = document.querySelector("#generate");
 
 
@@ -19,9 +27,24 @@ function generatePassword(){
     confirmUppercase = confirm("Include uppercase characters?");
     confirmNumber = confirm("Include number characters?");
     confirmSpecial = confirm("Include special characters?");
+    
     if(!confirmLowercase && !confirmUppercase && !confirmNumber && !confirmSpecial){
       alert("You must confirm at least one type of characters. Try again.");return;
     }
+    allAvailableChars = [];
+    if(confirmLowercase){allAvailableChars.push(...lowercaseChars);}
+    if(confirmUppercase){allAvailableChars.push(...uppercaseChars);}
+    if(confirmNumber){allAvailableChars.push(...numberChars);}
+    if(confirmSpecial){allAvailableChars.push(...specialChars);}
+
+    console.log(allAvailableChars);
+
+    var newPasswordString = "";
+    for(var x = 0; x < newInput; x++){
+      newPasswordString = "" + newPasswordString + allAvailableChars[Math.floor(Math.random()*allAvailableChars.length)];
+    }
+    console.log("NEW PASSWORD IS " + newPasswordString);
+    return newPasswordString;
 }
 
 // Write password to the #password input
