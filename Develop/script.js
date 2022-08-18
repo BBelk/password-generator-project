@@ -1,43 +1,35 @@
 // Assignment Code
-var confirmLowercase = false;
-var confirmUppercase = false;
-var confirmNumber = false;
-var confirmSpecial = false;
 
 var lowercaseChars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseChars = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var numberChars = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialChars = ["#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", "\:", "\;", " < ", "=", " > ", " ? ", "@", "[", "\\", "]", " ^ ", "_", "`", "{", "|", "}", "~"];
-
-var allAvailableChars = [];
-
+var specialChars = ["#", "$", "%", "&", "'", ",", "*", "+", "-", ".", "/", "\:", "\;", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"];
 
 var generateBtn = document.querySelector("#generate");
 
-
 function generatePassword(){
-  console.log("Button Pressed");
+  // console.log("Button Pressed");
   newInput = parseInt(prompt("How long will your password be? Input between 8 and 128."));
   if(!newInput || newInput < 7 || newInput > 128){
     alert("You must input a number between 8 and 128.");
     return;
   }
   
-    confirmLowercase = confirm("Include lowercase characters?");
-    confirmUppercase = confirm("Include uppercase characters?");
-    confirmNumber = confirm("Include number characters?");
-    confirmSpecial = confirm("Include special characters?");
+    var confirmLowercase = confirm("Include lowercase characters?");
+    var confirmUppercase = confirm("Include uppercase characters?");
+    var confirmNumber = confirm("Include number characters?");
+    var confirmSpecial = confirm("Include special characters?");
     
     if(!confirmLowercase && !confirmUppercase && !confirmNumber && !confirmSpecial){
       alert("You must confirm at least one type of characters. Try again.");return;
     }
-    allAvailableChars = [];
+    var allAvailableChars = [];
     if(confirmLowercase){allAvailableChars.push(...lowercaseChars);}
     if(confirmUppercase){allAvailableChars.push(...uppercaseChars);}
     if(confirmNumber){allAvailableChars.push(...numberChars);}
     if(confirmSpecial){allAvailableChars.push(...specialChars);}
 
-    console.log(allAvailableChars);
+    // console.log(allAvailableChars);
 
     var newPasswordString = "";
     for(var x = 0; x < newInput; x++){
@@ -51,10 +43,9 @@ function generatePassword(){
 function writePassword() {
   var password = generatePassword();
   if(typeof password === 'undefined'){
-    password = "Password generation failed, try again.";
+    password ="";
   }
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 
 }
